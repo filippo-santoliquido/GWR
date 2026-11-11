@@ -1,0 +1,7 @@
+dingo-gw>=0.10
+numpy
+scipy
+matplotlib
+pandas
+pyyaml
+jupyter

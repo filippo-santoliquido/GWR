@@ -1,0 +1,40 @@
+# Settings of the waveform data set for the toy model.
+#
+# The source is a binary black hole. Only the chirp mass changes from one waveform
+# to the next. All the other intrinsic parameters are fixed to a single value.
+
+# Frequencies at which the waveforms are computed.
+domain:
+  type: UniformFrequencyDomain
+  f_min: 20.0
+  f_max: 512.0
+  delta_f: 0.25    # frequency spacing in Hz; 0.25 Hz corresponds to 4 s of data
+
+# Waveform model.
+waveform_generator:
+  approximant: IMRPhenomD
+  f_ref: 20.0      # reference frequency in Hz
+
+# Priors of the intrinsic parameters, written as Bilby priors.
+# A parameter followed by a single number is fixed to that value.
+intrinsic_prior:
+  mass_1: bilby.core.prior.Constraint(minimum=10.0, maximum=80.0)
+  mass_2: bilby.core.prior.Constraint(minimum=10.0, maximum=80.0)
+  chirp_mass: bilby.core.prior.Uniform(minimum=25.0, maximum=35.0)
+  mass_ratio: 0.8
+  chi_1: 0.0
+  chi_2: 0.0
+  theta_jn: 0.5
+  phase: 0.0
+  luminosity_distance: 100.0   # Mpc, reference value
+  geocent_time: 0.0            # s, reference value
+
+# Number of waveforms in the data set.
+num_samples: 20000
+
+# Store the waveforms in compressed form, using a singular value decomposition (SVD).
+compression:
+  svd:
+    size: 50                       # number of basis elements kept
+    num_training_samples: 2000     # waveforms used to build the basis
+    num_validation_samples: 500    # waveforms used to check the basis
