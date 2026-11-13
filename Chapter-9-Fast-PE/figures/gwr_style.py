@@ -60,9 +60,9 @@ def use_book_style():
             "xtick.direction": "in",
             "ytick.direction": "in",
             "lines.linewidth": 1.2,
-            # Legends are drawn inside a thin box.
+            # Legends are drawn inside a thin box with rounded corners.
             "legend.frameon": True,
-            "legend.fancybox": False,
+            "legend.fancybox": True,
             "legend.edgecolor": "#6B6B6B",
             "legend.framealpha": 1.0,
             "patch.linewidth": 0.5,
